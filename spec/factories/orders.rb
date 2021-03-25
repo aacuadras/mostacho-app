@@ -16,5 +16,15 @@ FactoryBot.define do
     trait :active do
       status { "active" }
     end
+
+    factory :order_with_products do
+      transient do
+        product_count {3}
+      end
+
+      after(:create) do |order, evaluator|
+        create_list(:product, evaluator.product_count, order: order)
+      end
+    end
   end
 end
