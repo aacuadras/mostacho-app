@@ -1,7 +1,9 @@
+require 'date'
+
 FactoryBot.define do
   factory :order do
     name { "Person" }
-    delivery_date { "2021-03-25" }
+    delivery_date { Date.today }
 
     trait :complete do
       status { "complete" }
