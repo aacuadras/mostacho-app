@@ -4,10 +4,7 @@ FactoryBot.define do
   factory :order do
     name { "Person" }
     delivery_date { Date.today }
-
-    trait :complete do
-      status { "complete" }
-    end
+    status { "complete" }
 
     trait :ready_to_deliver do
       status { "ready_to_deliver" }
@@ -19,11 +16,11 @@ FactoryBot.define do
 
     factory :order_with_products do
       transient do
-        product_count {3}
+        products_count {3}
       end
 
       after(:create) do |order, evaluator|
-        create_list(:product, evaluator.product_count, order: order)
+        create_list(:product, evaluator.products_count, orders: [order])
       end
     end
   end
