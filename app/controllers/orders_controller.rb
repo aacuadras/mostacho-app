@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :set_order, only: [:show, :edit, :update, :destroy]
+    before_action :set_order, only: [:show, :edit, :update, :destroy, :update_status]
     before_action :set_products, only: [:edit, :new, :update, :create]
 
     def index
@@ -36,13 +36,27 @@ class OrdersController < ApplicationController
 
     def update
         respond_to do |format|
-            if @order.update(name: order_params[:name], delivery_date: order_params[:delivery_date])
+            if @order.update(name: order_params[:name], delivery_date: order_params[:delivery_date], status: order_params[:status])
                 EditInvoices.call({order: @order, products: order_params[:products]})
                 format.html {redirect_to @order, notice: 'Order was successfully updated.'}
                 format.json { render :show, status: :ok, location: @order }
             else
                 format.html { render :edit }
                 format.json { render json: @order.errors, status: :unprocessable_entity}
+            end
+        end
+    end
+
+    #custom method to only change the status of an order
+    def update_status
+        @order.change_status
+        respond_to do |format|
+            if @order.save
+                format.html {redirect_to orders_path, notice: "Status change for #{@order.name}'s order"}
+                format.json {render :index, status: :ok, location: @order}
+            else
+                format.html {redirect_to orders_path}
+                format.json {render json: @order.errors, status: :unprocessable_entity}
             end
         end
     end
@@ -57,6 +71,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-        params.require(:order).permit(:name, :delivery_date, products: {})
+        params.require(:order).permit(:name, :delivery_date, :status, products: {})
     end
 end

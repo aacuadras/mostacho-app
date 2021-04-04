@@ -8,6 +8,8 @@
       <tr>
         <th>Name</th>
         <th>Total Price</th>
+        <th>Status</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -16,6 +18,8 @@
         <tr>
           <td><%= link_to order.name, order %></td>
           <td>$<%= order.get_price %></td>
+          <td><%= order.get_status %></td>
+          <td><%= link_to 'Change Status', update_status_path(order), class: 'btn btn-primary', method: :patch %></td>
         </tr>
       <% end %>
     </tbody>

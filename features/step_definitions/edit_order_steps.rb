@@ -20,3 +20,7 @@ end
 Then('I should see the updated order information') do
     expect(page).to have_content(@new_name)
 end
+
+Then('I should see the updated status for the order') do
+    expect(page).to have_content("Ready to Deliver")
+end

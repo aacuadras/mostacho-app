@@ -19,3 +19,8 @@ Feature: Create and Edit an Order
         And I update the order information
         And I click "Update Order"
         Then I should see the updated order information
+
+    Scenario: Updating an Order Status
+        When I click "Orders"
+        And I click "Change Status"
+        Then I should see the updated status for the order

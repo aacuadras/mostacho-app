@@ -4,14 +4,14 @@ FactoryBot.define do
   factory :order do
     sequence(:name) {|n| "Person #{n}"}
     delivery_date { Date.today }
-    status { "complete" }
+    status { "active" }
 
     trait :ready_to_deliver do
       status { "ready_to_deliver" }
     end
 
-    trait :active do
-      status { "active" }
+    trait :complete do
+      status { "complete" }
     end
 
     factory :order_with_products do

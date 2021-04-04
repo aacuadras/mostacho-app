@@ -2,7 +2,7 @@ class Order < ApplicationRecord
     has_many :invoices
     has_many :products, through: :invoices
     validates :name, :delivery_date, :status, presence: true
-    validate :date_equal_or_after_today
+    validate :date_equal_or_after_today, on: :create
     validates :status, inclusion: {in: %w(active ready_to_deliver complete)}
     accepts_nested_attributes_for :invoices
 
@@ -36,6 +36,19 @@ class Order < ApplicationRecord
         end
 
         return price
+    end
+
+    def get_status
+        return "Ready to Deliver" if self.status == "ready_to_deliver"
+        return self.status.capitalize
+    end
+
+    def change_status
+        if self.status == "active"
+            self.status = "ready_to_deliver"
+        elsif self.status == "ready_to_deliver"
+            self.status = "complete"
+        end
     end
 
     private

@@ -6,5 +6,8 @@
             <%= ff.input p.id.to_s, label: p.name, input_html: {value: Invoice.find_by(order_id: @order.id, product_id: p.id).nil? ? 0 : Invoice.find_by(order_id: @order.id, product_id: p.id).quantity} %>
         <% end %>
     <% end %>
+    <% if controller.action_name == "edit" %>
+        <%= f.input :status, collection: ['active', 'ready_to_deliver', 'complete'], input_html: {value: @order.status} %>
+    <% end %>
     <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
