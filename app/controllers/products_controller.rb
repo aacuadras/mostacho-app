@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :destroy]
 
     def index
-        @products = Product.all
+      @products = Product.all
     end
 
     def show
@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     end
 
     def new
-        @product = Product.new
+      @product = Product.new
     end
 
     def edit
@@ -18,38 +18,38 @@ class ProductsController < ApplicationController
     end
 
     def create
-        @product = Product.new(product_params)
-    
-        respond_to do |format|
-          if @product.save
-            format.html { redirect_to @product, notice: 'Product was successfully created.' }
-            format.json { render :show, status: :created, location: @product }
-          else
-            format.html { render :new }
-            format.json { render json: @product.errors, status: :unprocessable_entity }
-          end
+      @product = Product.new(product_params)
+  
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
         end
+      end
     end
     
     def update
-        respond_to do |format|
-          if @product.update(product_params)
-            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-            format.json { render :show, status: :ok, location: @product }
-          else
-            format.html { render :edit }
-            format.json { render json: @product.errors, status: :unprocessable_entity }
-          end
+      respond_to do |format|
+        if @product.update(product_params)
+          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
         end
+      end
     end
 
     private
 
     def set_product
-        @product = Product.find_by(id: params[:id])
+      @product = Product.find_by(id: params[:id])
     end
 
     def product_params 
-        params.require(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price)
     end
 end

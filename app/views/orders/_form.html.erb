@@ -1,0 +1,10 @@
+<%= simple_form_for @order do |f| %>
+    <%= f.input :name %>
+    <%= f.input :delivery_date, as: :date, html5: true, input_html: {value: Date.today} %>
+    <%= f.simple_fields_for :products do |ff| %>
+        <% @products.each do |p| %>
+            <%= ff.input p.id.to_s, label: p.name, input_html: {value: Invoice.find_by(order_id: @order.id, product_id: p.id).nil? ? 0 : Invoice.find_by(order_id: @order.id, product_id: p.id).quantity} %>
+        <% end %>
+    <% end %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

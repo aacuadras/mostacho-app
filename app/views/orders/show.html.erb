@@ -1,0 +1,14 @@
+<div class="container">
+    <h3>Order for <%= @order.name %> </h3>
+    <h5>Delivery Date: <%= @order.delivery_date %> </h5>
+    <h5>Total Price: <%= @order.get_price %></h5>
+
+    <% @order.invoices.each do |invoice| %>
+        <p><%= invoice.product.name%>: <%= invoice.quantity %></p>
+    <% end %>
+
+    <h5>Status: <%= @order.status %></h5>
+
+    <%= link_to 'Edit', edit_order_path(@order) %>
+    <%= link_to 'Back', orders_path %>
+</div>

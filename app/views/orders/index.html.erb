@@ -1,0 +1,27 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Orders</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.name, order %></td>
+          <td>$<%= order.get_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Order', new_order_path, class: "btn btn-success" %>
+</div>

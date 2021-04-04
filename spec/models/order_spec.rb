@@ -38,5 +38,10 @@ RSpec.describe Order, type: :model do
       expect(order).to be_invalid
     end
 
+    it "status is not a valid keyword" do
+      order = build(:order, status: "foo")
+      expect(order).to be_invalid
+    end
+
   end
 end

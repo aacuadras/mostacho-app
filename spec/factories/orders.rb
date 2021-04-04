@@ -2,7 +2,7 @@ require 'date'
 
 FactoryBot.define do
   factory :order do
-    name { "Person" }
+    sequence(:name) {|n| "Person #{n}"}
     delivery_date { Date.today }
     status { "complete" }
 

@@ -10,6 +10,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end">
+    <%= link_to "Mostacho", root_path, class: "navbar-brand" %>
+    <%= link_to "New Order", new_order_path, class: "btn btn-success ml-auto mr-1" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav text-right">
+            <li class="nav-item active">
+                <%= link_to "Orders", orders_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+                <%= link_to "Products", products_path, class: "nav-link" %>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
   <body>
     <%= yield %>
   </body>
