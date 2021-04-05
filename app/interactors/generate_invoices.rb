@@ -1,4 +1,4 @@
-class CreateInvoices
+class GenerateInvoices
     include Interactor
 
     def call

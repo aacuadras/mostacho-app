@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
         respond_to do |format|
             if @order.save
-                CreateInvoices.call({order: @order, products: order_params[:products]})
+                GenerateInvoices.call({order: @order, products: order_params[:products]})
                 format.html { redirect_to @order, notice: "Product was successfully created" }
                 format.json { render :show, status: :created, location: @order }
             else
