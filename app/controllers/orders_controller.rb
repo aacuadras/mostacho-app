@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
     before_action :set_products, only: [:edit, :new, :update, :create]
 
     def index
-        @orders = Order.all
+        @active_orders = Order.active_orders
+        @completed_orders = Order.completed_orders
     end
 
     def show

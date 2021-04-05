@@ -32,7 +32,7 @@ class Order < ApplicationRecord
         price = 0
         invoices = Invoice.where(order_id: self.id)
         invoices.each do |i|
-            price += Product.find_by(id: i.product_id).price
+            price += Product.find_by(id: i.product_id).price * i.quantity
         end
 
         return price
@@ -49,6 +49,14 @@ class Order < ApplicationRecord
         elsif self.status == "ready_to_deliver"
             self.status = "complete"
         end
+    end
+
+    def self.active_orders
+        Order.where(status: ["active", "ready_to_deliver"])
+    end
+
+    def self.completed_orders
+        Order.where(status: "complete")
     end
 
     private
