@@ -1,31 +1,46 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 rounded shadow-sm">
+    <div class="lh-1">
+      <h1 class="mb-0 lh-1">Orders</h1>
+    </div>
+  </div>
 
-  <h1>Orders</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Total Price</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @orders.each do |order| %>
-        <tr>
-          <td><%= link_to order.name, order %></td>
-          <td>$<%= order.get_price %></td>
-          <td><%= order.get_status %></td>
-          <td><%= link_to 'Change Status', update_status_path(order), class: 'btn btn-primary', method: :patch %></td>
-        </tr>
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Active Orders</h6>
+    <% @active_orders.each do |order| %>
+      <%= link_to order, class: "order-link" do %>
+        <div class="d-flex text-muted pt-3 border-bottom">
+          <div class="col-sm-0"><svg class="bd-placeholder-img flex-shrink-0 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></div>
+          <div class="col-sm-8">
+            <p class="pb-3 mb-0 small lh-sm">
+              <strong class="d-block text-gray-dark"><%= order.name %></strong>
+              Delivery Date: <%= order.delivery_date %>, Status: <%= order.get_status %> <br>
+              <%= link_to 'Change Status', update_status_path(order), class: 'btn btn-outline-primary btn-sm', method: :patch %>
+            </p>
+          </div>
+          <div class="col text-right">
+            <p class="small">$<%= order.get_price %></p> 
+          </div>          
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </div>
 
-  <br>
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Completed Orders</h6>
+    <% @completed_orders.each do |order| %>
+      <%= link_to order, class: "order-link" do %>
+        <div class="d-flex text-muted pt-3 border-bottom">
+            <svg class="bd-placeholder-img flex-shrink-0 mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <p class="pb-3 mb-0 small lh-sm">
+              <strong class="d-block text-gray-dark"><%= order.name %></strong>
+              Delivery Date: <%= order.delivery_date %>, Status: <%= order.get_status %> <br>
+            </p>
+            <p class="small ml-auto">$<%= order.get_price %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-  <%= link_to 'New Order', new_order_path, class: "btn btn-success" %>
-</div>
+
+</main>

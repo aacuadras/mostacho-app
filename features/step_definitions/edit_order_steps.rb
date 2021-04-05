@@ -3,7 +3,7 @@ When('I fill out the new order information') do
     fill_in "order[name]", with: @name
     #fill in each product with a quantity
     Product.all.each do |p|
-        fill_in "order[products][#{p.id}]", with: p.id
+        page.find('button', id: "addBtn[#{p.id}]").click
     end
 end
 

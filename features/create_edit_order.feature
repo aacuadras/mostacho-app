@@ -6,6 +6,7 @@ Feature: Create and Edit an Order
         Given there are orders with products
         When I visit the homepage
         
+    @javascript    
     Scenario: Adding an Order
         When I click "New Order"
         And I fill out the new order information

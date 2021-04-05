@@ -23,6 +23,11 @@ RSpec.describe Invoice, type: :model do
       expect(invoice).to be_invalid
     end
 
+    it "quantity is missing" do
+      invoice = build(:invoice, quantity: nil)
+      expect(invoice).to be_invalid
+    end
+
     it "quantity is less than 1" do
       invoice = build(:invoice, quantity: 0)
       expect(invoice).to be_invalid
