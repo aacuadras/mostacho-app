@@ -12,8 +12,11 @@
                         <div class="row mb-4">
                             <div class="col-md-5 col-lg-3 col-xl-3">
                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                    <img class="img-fluid w-100"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+                                    <% if p.photo.attached? %>
+                                      <%= image_tag p.photo, class: "img-fluid w-100"%>
+                                    <% else %>
+                                      <img class="img-fluid w-100" src="https://dummyimage.com/600x400/000/fff" alt="Sample">
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="col-md-7 col-lg-9 col-xl-9">
