@@ -4,7 +4,11 @@ When('I update the name of the product') do
 end
 
 When('I click {string}') do |string|
-    click_on string
+    if string == "Create Order"
+        page.find('input[name="commit"]').click
+    else
+        click_on string
+    end
 end
 
 Then('I should see the new name of the product') do
