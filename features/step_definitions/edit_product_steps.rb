@@ -22,3 +22,7 @@ Then('I should see the product information') do
     expect(page).to have_content(@name)
     expect(page).to have_content(@price)
 end
+
+When('I click edit for the first product') do
+    page.first('a', text: 'Edit').click
+end

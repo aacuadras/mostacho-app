@@ -13,7 +13,7 @@ Then('I should see the list of products') do
 end
 
 When('I click the first product') do
-    click_on @product1.name
+    page.first('a', text: 'View').click
 end
 
 Then('I should see the name and price of the product') do

@@ -14,8 +14,7 @@ Feature: Create and Edit a Product
         Then I should see the product information
 
     Scenario: Editing a Product
-        And I click the first product
-        And I click "Edit"
+        And I click edit for the first product
         And I update the name of the product
         And I click "Update Product"
         Then I should see the new name of the product

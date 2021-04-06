@@ -11,24 +11,31 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header class="px-3 py-2 bg-dark text-white">
+  <header class="px-3 py-2 bg-light text-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <%= link_to root_path, class: "d-flex align-items-center me-lg-auto" do %>
           <%= image_pack_tag "media/images/mostacho_logo.png", width: "80", height: "80" %>
         <% end %>
 
-        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-          <li>
-            <% if user_signed_in? %>
-              <%= link_to orders_path, class: "nav-link text-white" do %>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">          
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to new_order_path, class: "nav-link text-dark" do %>
+                <i class="fas fa-plus fa-2x mx-2 bi d-block mx-auto mb-1"></i>
+                New Order
+              <% end %>
+            </li>
+            <li>
+              <%= link_to orders_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-table fa-2x mx-2 bi d-block mx-auto mb-1"></i>
                 Orders
               <% end %>
-            <% end %>
-          </li>
+            </li>
+          <% end %>
+          
           <li>
-            <%= link_to products_path, class: "nav-link text-white" do %>
+            <%= link_to products_path, class: "nav-link text-dark" do %>
               <i class="fas fa-birthday-cake fa-2x mx-2 bi d-block mx-auto mb-1"></i>
               Products
             <% end %>
@@ -36,12 +43,12 @@
           </li>
           <li>
             <% if user_signed_in? %>
-              <%= link_to destroy_user_session_path, class: "nav-link text-white", method: :delete do %>
+              <%= link_to destroy_user_session_path, class: "nav-link text-dark", method: :delete do %>
                 <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
                 Sign Out
               <% end %>
             <% else %>
-              <%= link_to new_user_session_path, class: "nav-link text-white" do %>
+              <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
                 <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
                 Sign In
               <% end %>
