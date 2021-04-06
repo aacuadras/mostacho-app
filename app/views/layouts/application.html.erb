@@ -8,33 +8,49 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end">
-    <%= link_to "Mostacho", root_path, class: "navbar-brand" %>
-    <% if user_signed_in? %>
-      <%= link_to "New Order", new_order_path, class: "btn btn-success ml-auto mr-1" %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary ml-auto mr-1" %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-        <ul class="navbar-nav text-right">
-            <li class="nav-item active">
-                <%= link_to "Orders", orders_path, class: "nav-link" if user_signed_in?%>
-            </li>
-            <li class="nav-item active">
-                <%= link_to "Products", products_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-                <%= link_to "Sign Out", destroy_user_session_path, class: "nav-link", method: :delete if user_signed_in? %>
-            </li>
-        </ul>
-    </div>
-  </nav>
+  <header class="px-3 py-2 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <%= link_to root_path, class: "d-flex align-items-center me-lg-auto" do %>
+          <%= image_pack_tag "media/images/mostacho_logo.png", width: "80", height: "80" %>
+        <% end %>
 
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to orders_path, class: "nav-link text-white" do %>
+                <i class="fas fa-table fa-2x mx-2 bi d-block mx-auto mb-1"></i>
+                Orders
+              <% end %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to products_path, class: "nav-link text-white" do %>
+              <i class="fas fa-birthday-cake fa-2x mx-2 bi d-block mx-auto mb-1"></i>
+              Products
+            <% end %>
+          </li>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to destroy_user_session_path, class: "nav-link text-white", method: :delete do %>
+                <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
+                Sign Out
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, class: "nav-link text-white" do %>
+                <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
+                Sign In
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
   <body>
     <%= yield %>
   </body>
