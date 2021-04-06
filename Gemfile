@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'figaro'
 gem 'simple_form'
 gem 'interactor', "~> 3.0"
+gem 'aws-sdk-s3', require: false
+gem 'active_storage_validations'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

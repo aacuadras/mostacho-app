@@ -35,4 +35,18 @@ RSpec.describe Product, type: :model do
 
   end
 
+  context "product images" do
+    it "should be valid when attaching an image" do
+      product = create(:product)
+      product.photo.attach(io: File.open("spec/fixtures/images/carrot_cake.jpeg"), filename: 'carrot_cake.jpeg', content_type: "image/jpeg")
+      expect(product).to be_valid
+    end
+
+    it "should be invalid when attaching an incorrect image type" do
+      product = create(:product)
+      product.photo.attach(io: File.open("spec/fixtures/images/cake_gif.gif"), filename: 'cake_gif.gif', content_type: "image/gif")
+      expect(product).to be_invalid
+    end
+  end
+
 end
