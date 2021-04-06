@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy, :update_status]
     before_action :set_products, only: [:edit, :new, :update, :create]
+    before_action :authenticate_user!
 
     def index
         @active_orders = Order.active_orders

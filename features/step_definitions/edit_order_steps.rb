@@ -7,6 +7,14 @@ When('I fill out the new order information') do
     end
 end
 
+Given('I sign in') do
+    @user = create(:user)
+    visit new_user_session_path
+    fill_in "user[email]", with: @user.email
+    fill_in "user[password]", with: @user.password
+    click_on "commit"
+end
+
 Then('I should see the new order information') do
     expect(page).to have_content(@name)
     expect(page).to have_content(Product.first.name)

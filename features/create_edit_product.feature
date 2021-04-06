@@ -4,6 +4,7 @@ Feature: Create and Edit a Product
 
     Background: 
         Given there are products
+        And I sign in
         When I visit the homepage
 
     Scenario: Adding a Product

@@ -4,6 +4,7 @@ Feature: Create and Edit an Order
 
     Background: 
         Given there are orders with products
+        And I sign in
         When I visit the homepage
         
     @javascript    

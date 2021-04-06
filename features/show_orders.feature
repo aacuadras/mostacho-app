@@ -1,10 +1,11 @@
 Feature: Show Orders
 
-    Signed in and unsigned users should be able to 
+    Signed in users should be able to 
     see all the orders in the platform
 
     Background: 
         Given there are orders with products
+        And I sign in
         When I visit the homepage
         And I click "Orders"
 
