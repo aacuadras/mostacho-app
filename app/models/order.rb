@@ -15,14 +15,14 @@ class Order < ApplicationRecord
     end
 
     def edit_invoices(products)
-        products.each do |k,v|
-            if v.to_i > 0 
-                i = Invoice.find_by(product_id: k.to_i)
-                if(!i.nil? && i.quantity != v.to_i )
+        products.each do |k,val|
+            if val.to_i > 0 
+                i = Invoice.find_by(product_id: k.to_i, order_id: self.id)
+                if(!i.nil? && i.quantity != val.to_i )
                     #this means that the invoice exists, but it doesn't have the same quantity
-                    i.update(quantity: v.to_i)
+                    i.update(quantity: val.to_i)
                 elsif(i.nil?)
-                    Invoice.create(order_id: self.id, product_id: k.to_i, quantity: v.to_i)
+                    Invoice.create(order_id: self.id, product_id: k.to_i, quantity: val.to_i)
                 end
             end
         end

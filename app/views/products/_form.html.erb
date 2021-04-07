@@ -1,12 +1,12 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <% if controller.action_name == "new" %>
-            <h4 class="modal-title">New Product</h4>
-        <% elsif controller.action_name == "edit" %>
-            <h4 class="modal-title">Edit Product</h4>
-        <% end %>
+            <% if controller.action_name == "new" %>
+                <h4 class="modal-title">New Product</h4>
+            <% elsif controller.action_name == "edit" %>
+                <h4 class="modal-title">Edit Product</h4>
+            <% end %>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <%= simple_form_for @product, remote: true do |f| %>
             <div class="modal-body">
