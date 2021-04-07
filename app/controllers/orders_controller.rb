@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy, :update_status]
     before_action :set_products, only: [:edit, :new, :update, :create]
+    before_action :set_invoices, only: :show
     before_action :authenticate_user!
 
     def index
@@ -49,6 +50,14 @@ class OrdersController < ApplicationController
         end
     end
 
+    def destroy
+        @order.destroy
+        respond_to do |format|
+            format.html { redirect_to orders_url, notice: 'Order was successfully deleted' }
+            format.json { head :no_content }
+        end
+    end
+
     #custom method to only change the status of an order
     def update_status
         @order.change_status
@@ -70,6 +79,10 @@ class OrdersController < ApplicationController
 
     def set_products
         @products = Product.all
+    end
+
+    def set_invoices
+        @invoices = Invoice.where(order_id: @order.id)
     end
 
     def order_params

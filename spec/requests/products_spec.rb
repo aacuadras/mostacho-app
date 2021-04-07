@@ -6,12 +6,6 @@ RSpec.describe "Products", type: :request do
       get products_url
       expect(response).to be_successful
     end
-  
-    it "should GET /show" do
-      @product = create(:product)
-      get product_url(@product)
-      expect(response).to be_successful
-    end   
 
     describe "GET /new" do
       it "should NOT GET /new" do
@@ -49,12 +43,6 @@ RSpec.describe "Products", type: :request do
       get products_url
       expect(response).to be_successful
     end
-  
-    it "should GET /show" do
-      @product = create(:product)
-      get product_url(@product)
-      expect(response).to be_successful
-    end  
 
     it "should GET /new" do
       get new_product_url

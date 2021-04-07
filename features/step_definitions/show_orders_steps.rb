@@ -13,5 +13,5 @@ end
 Then('I should see the order information') do
     expect(page).to have_content(@order1.name)
     expect(page).to have_content(@order1.delivery_date)
-    expect(page).to have_content(@order1.status)
+    expect(page).to have_content(@order1.get_status)
 end

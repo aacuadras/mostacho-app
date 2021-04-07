@@ -1,6 +1,20 @@
-<%= simple_form_for @product do |f| %>
-    <%= f.input :name %>
-    <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
-    <%= f.button :submit %>
-<% end %>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <% if controller.action_name == "new" %>
+            <h4 class="modal-title">New Product</h4>
+        <% elsif controller.action_name == "edit" %>
+            <h4 class="modal-title">Edit Product</h4>
+        <% end %>
+        </div>
+        <%= simple_form_for @product, remote: true do |f| %>
+            <div class="modal-body">
+                <%= f.input :name, input_html: {class: "form-control input-lg", value: @product.name.blank? ? "" : @product.name}, wrapper_html: {class: "form-group"} %>
+                <%= f.input :price, input_html: {class: "form-control input-lg", wrapper_html: {class: "form-group mb-1"}} %>
+                <%= f.input :photo, as: :file, wrapper_html: {class: "form-group"} %>
+            </div>
+            <%= f.button :submit, wrapper_html: {class: "modal-footer"}, class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

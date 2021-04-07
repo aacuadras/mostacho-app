@@ -1,33 +1,35 @@
 class ProductsController < ApplicationController
-    before_action :set_product, only: [:show, :edit, :update, :destroy]
+    before_action :set_product, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :edit, :update, :create, :destroy]
 
     def index
       @products = Product.all
     end
 
-    def show
-        
-    end
-
     def new
       @product = Product.new
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 
     def edit
-
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 
     def create
       @product = Product.new(product_params)
-  
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product, notice: 'Product was successfully created.' }
-          format.json { render :show, status: :created, location: @product }
+          format.html {redirect_to products_url, notice: "Created Product!"}
+          format.js
         else
           format.html { render :new }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     end
@@ -35,12 +37,20 @@ class ProductsController < ApplicationController
     def update
       respond_to do |format|
         if @product.update(product_params)
-          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-          format.json { render :show, status: :ok, location: @product }
+          format.html { redirect_to products_url, notice: "Updated Product!" }
+          format.js
         else
           format.html { render :edit }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+          format.js
         end
+      end
+    end
+
+    def destroy
+      @product.destroy
+      respond_to do |format|
+          format.html { redirect_to products_url, notice: 'Product was successfully deleted' }
+          format.json { head :no_content }
       end
     end
 
