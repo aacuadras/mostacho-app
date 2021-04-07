@@ -5,8 +5,8 @@ class OrdersController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @active_orders = Order.active_orders
-        @completed_orders = Order.completed_orders
+        @active_orders = Order.active_orders.order(delivery_date: :asc)
+        @completed_orders = Order.completed_orders.order(delivery_date: :desc).limit(20)
     end
 
     def show

@@ -7,7 +7,7 @@ Feature: Show Orders
         Given there are orders with products
         And I sign in
         When I visit the homepage
-        And I click "Orders"
+        And I click "Órdenes"
 
     Scenario: Show All Orders
         Then I should see the list of orders

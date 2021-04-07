@@ -30,5 +30,5 @@ Then('I should see the updated order information') do
 end
 
 Then('I should see the updated status for the order') do
-    expect(page).to have_content("Ready to Deliver")
+    expect(page).to have_content("Lista para Entregar")
 end

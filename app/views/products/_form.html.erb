@@ -2,19 +2,23 @@
     <div class="modal-content">
         <div class="modal-header">
             <% if controller.action_name == "new" %>
-                <h4 class="modal-title">New Product</h4>
+                <h4 class="modal-title">Nuevo Producto</h4>
             <% elsif controller.action_name == "edit" %>
-                <h4 class="modal-title">Edit Product</h4>
+                <h4 class="modal-title">Editar Producto</h4>
             <% end %>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <%= simple_form_for @product, remote: true do |f| %>
             <div class="modal-body">
-                <%= f.input :name, input_html: {class: "form-control input-lg", value: @product.name.blank? ? "" : @product.name}, wrapper_html: {class: "form-group"} %>
-                <%= f.input :price, input_html: {class: "form-control input-lg", wrapper_html: {class: "form-group mb-1"}} %>
-                <%= f.input :photo, as: :file, wrapper_html: {class: "form-group"} %>
+                <%= f.input :name, label: "Nombre", input_html: {class: "form-control input-lg", value: @product.name.blank? ? "" : @product.name}, wrapper_html: {class: "form-group"} %>
+                <%= f.input :price, label: "Precio", input_html: {class: "form-control input-lg", wrapper_html: {class: "form-group mb-1"}} %>
+                <%= f.input :photo, label: "Foto", as: :file, wrapper_html: {class: "form-group"} %>
             </div>
-            <%= f.button :submit, wrapper_html: {class: "modal-footer"}, class: "btn btn-primary" %>
+            <% if controller.action_name == "new" %>
+                <%= f.submit "Crear Producto", wrapper_html: {class: "modal-footer"}, class: "btn btn-primary" %>
+            <% elsif controller.action_name == "edit" %>
+                <%= f.submit "Actualizar Producto", wrapper_html: {class: "modal-footer"}, class: "btn btn-primary" %>
+            <% end %>
         <% end %>
     </div>
 </div>

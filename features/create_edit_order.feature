@@ -9,20 +9,20 @@ Feature: Create and Edit an Order
         
     @javascript    
     Scenario: Adding an Order
-        When I click "New Order"
+        When I click "Nueva Orden"
         And I fill out the new order information
-        And I click "Create Order"
+        And I click "Crear Orden"
         Then I should see the new order information
 
     Scenario: Editing an Order
-        When I click "Orders"
+        When I click "Órdenes"
         And I click the first order
-        And I click "Edit"
+        And I click "Editar"
         And I update the order information
-        And I click "Update Order"
+        And I click "Actualizar Orden"
         Then I should see the updated order information
 
     Scenario: Updating an Order Status
-        When I click "Orders"
-        And I click "Change Status"
+        When I click "Órdenes"
+        And I click "Cambiar Estado"
         Then I should see the updated status for the order

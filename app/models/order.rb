@@ -39,7 +39,10 @@ class Order < ApplicationRecord
     end
 
     def get_status
-        return "Ready to Deliver" if self.status == "ready_to_deliver"
+        return "Lista para Entregar" if self.status == "ready_to_deliver"
+        return "Activa" if self.status == "active"
+        return "Completada" if self.status == "complete"
+        
         return self.status.capitalize
     end
 

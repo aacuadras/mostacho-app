@@ -7,7 +7,7 @@
         <!-- Card -->
         <div class="card wish-list mb-3">
             <div class="card-body">
-                <h5 class="mb-4">Products</h5>
+                <h5 class="mb-4">Productos</h5>
                 <%= f.simple_fields_for :products do |ff| %>
                     <% @products.each do |p| %>
                         <div class="row mb-4">
@@ -53,7 +53,7 @@
             <div class="card mb-3">
                 <div class="card-body">
 
-                <h5 class="mb-4">Delivery Date</h5>
+                <h5 class="mb-4">Fecha de Entrega</h5>
                 <%= f.input :status, collection: ['active', 'ready_to_deliver', 'complete'], class: "mb-0", input_html: {value: @order.status, class: "form-control w-25"} %>
                 
                 </div>
@@ -73,26 +73,30 @@
       <div class="card mb-3">
         <div class="card-body">
 
-          <h5 class="mb-3">Order Information</h5>
+          <h5 class="mb-3">Información de Orden</h5>
 
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-              Name
+              Nombre
               <span><%= f.input :name, label: false, input_html: {class: "form-control"} %></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-              Delivery Date
+              Fecha de Entrega
               <span><%= f.input :delivery_date, as: :date, html5: true, label: false, input_html: {value: Date.today, class: "form-control"} %></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
               <div>
-                <strong>Total Cost</strong>
+                <strong>Total</strong>
               </div>
               <span id="totalCost"><strong>$<%= @order.get_price %></strong></span>
             </li>
           </ul>
 
-          <%= f.button :submit, class: "btn btn-primary btn-block waves-effect waves-light" %>
+          <% if controller.action_name == "new" %>
+            <%= f.submit "Crear Orden", class: "btn btn-primary btn-block waves-effect waves-light" %>
+          <% else %>
+            <%= f.submit "Actualizar Orden", class: "btn btn-primary btn-block waves-effect waves-light" %>
+          <% end %>
 
         </div>
       </div>

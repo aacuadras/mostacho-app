@@ -23,13 +23,13 @@
             <li>
               <%= link_to new_order_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-plus fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                New Order
+                Nueva Orden
               <% end %>
             </li>
             <li>
               <%= link_to orders_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-table fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Orders
+                Órdenes
               <% end %>
             </li>
           <% end %>
@@ -37,7 +37,7 @@
           <li>
             <%= link_to products_path, class: "nav-link text-dark" do %>
               <i class="fas fa-birthday-cake fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-              Products
+              Productos
             <% end %>
           </li>
           </li>
@@ -45,12 +45,12 @@
             <% if user_signed_in? %>
               <%= link_to destroy_user_session_path, class: "nav-link text-dark", method: :delete do %>
                 <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Sign Out
+                Cerrar Sesión
               <% end %>
             <% else %>
               <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
                 <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Sign In
+                Iniciar Sesión
               <% end %>
             <% end %>
           </li>
