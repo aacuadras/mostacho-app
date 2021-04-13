@@ -1,0 +1,15 @@
+es:
+  activerecord:
+    attributes:
+      product:
+        name: "Nombre"
+        price: "Precio"
+    errors:
+      models:
+        product:
+          attributes:
+            name: 
+              blank: "no puede estar vacío"
+            price: 
+              blank: "no puede estar vacío"
+              not_a_number: "no es un número"

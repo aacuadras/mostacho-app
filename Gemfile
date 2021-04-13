@@ -33,6 +33,7 @@ gem 'simple_form'
 gem 'interactor', "~> 3.0"
 gem 'aws-sdk-s3', require: false
 gem 'active_storage_validations'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

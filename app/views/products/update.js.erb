@@ -1,3 +1,7 @@
-$('#exampleModal').modal('hide');
-$('#name_<%= @product.id.to_s %>').text("<%= @product.name %>");
-$('#price_<%= @product.id.to_s %>').text("$<%= @product.price %>");
+<% if @product.update(@product_params) %>
+    $('#exampleModal').modal('hide');
+    $('#name_<%= @product.id.to_s %>').text("<%= @product.name %>");
+    $('#price_<%= @product.id.to_s %>').text("$<%= @product.price %>");
+<% else %>
+    $(".modal-body").prepend('<%= j render "alert", product: @product %>');
+<% end %>

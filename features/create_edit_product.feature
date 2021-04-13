@@ -7,12 +7,14 @@ Feature: Create and Edit a Product
         And I sign in
         When I visit the homepage
 
+    @javascript
     Scenario: Adding a Product
         And I click "Nuevo Producto"
         And I fill in the product information
         And I click "Crear Producto"
         Then I should see the product information
-
+        
+    @javascript
     Scenario: Editing a Product
         And I click edit for the first product
         And I update the name of the product

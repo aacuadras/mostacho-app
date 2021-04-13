@@ -1,0 +1,8 @@
+<div class="alert alert-danger">
+    Los siguientes errores evitaron que el producto se almacenara:
+    <ul>
+        <% product.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+</div>

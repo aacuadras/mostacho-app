@@ -54,9 +54,8 @@ RSpec.describe "Products", type: :request do
         it "should POST /create" do
           @product = build(:product)
           expect {
-            post '/products', params: {product: attributes_for(:product, name: @product.name, price: @product.price, id: @product.id)}
+            post '/products', params: {product: attributes_for(:product, name: @product.name, price: @product.price, id: @product.id)}, xhr: true
           }.to change{Product.count}.by(1)
-          assert_response :redirect
         end
       end
   
@@ -64,10 +63,8 @@ RSpec.describe "Products", type: :request do
         it "should NOT POST /create" do
           @product = build(:product, name: "")
           expect {
-            post '/products', params: {product: attributes_for(:product, name: nil, price: @product.price, id: @product.id)}
+            post '/products', params: {product: attributes_for(:product, name: nil, price: @product.price, id: @product.id)}, xhr: true
           }.to change{Product.count}.by(0)
-  
-          assert_response :success
         end
       end
     end    

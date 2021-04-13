@@ -1,2 +1,7 @@
-$('#exampleModal').modal('hide');
-$('#product_cards').append('<%= j render "product_card", product: @product %>');
+<% if @product.save %>
+    $('#exampleModal').modal('hide');
+    $('#product_cards').append('<%= j render "product_card", product: @product %>');
+<% else %>
+    $(".alert").remove();
+    $(".modal-body").prepend('<%= j render "alert", product: @product %>');
+<% end %>
