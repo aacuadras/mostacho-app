@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/aacuadras/mostacho-app) 
 ![Rails Version](https://img.shields.io/badge/rails--version-6.1.3-blue) 
 
-(Ruby on Rails)[https://rubyonrails.org/] application to manage orders and inventory of products. Users cannot register for the app for security reasons, but data can be seeded to the application using. 
+[Ruby on Rails](https://rubyonrails.org/) application to manage orders and inventory of products. Users cannot register for the app for security reasons, but data can be seeded to the application using. 
 
 ```ruby 
 User.create(name: "<YOUR_NAME>", password: "<YOUR_PASSWORD>")
