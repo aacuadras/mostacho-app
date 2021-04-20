@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :destroy]
+    before_action :set_product, only: [:edit, :update, :destroy, :show]
     before_action :authenticate_user!, only: [:new, :edit, :update, :create, :destroy]
 
     def index
@@ -35,9 +35,14 @@ class ProductsController < ApplicationController
     end
     
     def update
-      @product_params = product_params
       respond_to do |format|
-        format.js
+        if @product.update(product_params)
+          format.html { redirect_to @product, notice: "#{@product.name} fue actualizado!" }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { redner json: @product.errors, status: :unprocessable_entity }
+        end
       end
     end
 

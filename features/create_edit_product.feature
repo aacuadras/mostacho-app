@@ -13,9 +13,8 @@ Feature: Create and Edit a Product
         And I click "Crear Producto"
         Then I should see the product information
         
-    @javascript
     Scenario: Editing a Product
         And I click edit for the first product
         And I update the name of the product
-        And I click "Actualizar Producto"
+        And I click "Editar"
         Then I should see the new name of the product
