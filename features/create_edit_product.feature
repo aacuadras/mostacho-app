@@ -7,7 +7,6 @@ Feature: Create and Edit a Product
         And I sign in
         When I visit the homepage
 
-    @javascript
     Scenario: Adding a Product
         And I click "Nuevo Producto"
         And I fill in the product information
