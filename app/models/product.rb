@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+    after_create_commit { broadcast_append_to "products"}
+    after_update_commit {broadcast_replace_to "products"}
+    after_destroy_commit {broadcast_remove_to "products"}
+
     has_many :invoices
     has_many :orders, through: :invoices
     has_one_attached :photo, dependent: :destroy

@@ -1,5 +1,7 @@
 <h1>Editing Product</h1>
 
-<%= render 'form', product: @product %>
+<%= turbo_frame_tag dom_id(@product) do %>
+    <%= render 'edit_form', product: @product %>
+<% end %>
 
 <%= link_to 'Back', products_path %>
