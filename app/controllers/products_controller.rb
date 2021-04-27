@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     def update
       respond_to do |format|
         if @product.update(product_params)
+          format.turbo_stream { render turbo_stream: turbo_stream.append("toasts", partial: "shared/toast", locals: {title: "Editar Producto", message: "El producto fue actualizado!"})}
           format.html { redirect_to @product, notice: "#{@product.name} fue actualizado!" }
           format.json { render :show, status: :ok, location: @product }
         else
@@ -48,6 +49,7 @@ class ProductsController < ApplicationController
     def destroy
       @product.destroy
       respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.append("toasts", partial: "shared/toast", locals: {title: "Eliminar Producto", message: "El producto fue eliminado!"})}
           format.html { redirect_to products_url, notice: 'Product was successfully deleted' }
           format.json { head :no_content }
       end
