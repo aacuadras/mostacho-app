@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "new_product", partial: "products/product", locals: { product: @product } %>
+<%= turbo_stream.append "products", partial: "shared/new_product_btn" %>
+<%= turbo_stream.append "toasts", partial: "shared/toast", locals: { title: "Nuevo Producto", message: "El producto fue creado" } %>
+

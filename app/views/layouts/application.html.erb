@@ -11,54 +11,12 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   </head>
 
-  <header class="px-3 py-2 bg-light text-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <%= link_to root_path, class: "d-flex align-items-center me-lg-auto" do %>
-          <%= image_pack_tag "media/images/mostacho_logo.png", width: "80", height: "80" %>
-        <% end %>
+  <%= render 'shared/navbar' %>
 
-        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">          
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to new_order_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-plus fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Nueva Orden
-              <% end %>
-            </li>
-            <li>
-              <%= link_to orders_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-table fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Órdenes
-              <% end %>
-            </li>
-          <% end %>
-          
-          <li>
-            <%= link_to products_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-birthday-cake fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-              Productos
-            <% end %>
-          </li>
-          </li>
-          <li>
-            <% if user_signed_in? %>
-              <%= link_to destroy_user_session_path, class: "nav-link text-dark", method: :delete do %>
-                <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Cerrar Sesión
-              <% end %>
-            <% else %>
-              <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
-                <i class="far fa-user fa-2x mx-2 bi d-block mx-auto mb-1"></i>
-                Iniciar Sesión
-              <% end %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
   <body>
-    <%= yield %>
+    <div class="container position-relative">
+      <div id="toasts" style="position: absolute; top: 0; right: 0;"></div>
+      <%= yield %>
+    </div>
   </body>
 </html>
