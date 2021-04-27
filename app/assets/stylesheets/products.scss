@@ -14,3 +14,17 @@
         font-size: 3.5rem;
     }
 }
+
+.photo-button {
+    position: absolute;
+    width: 500px;
+    left:0;
+    top: 180px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+.container-fluid:hover .photo-button {
+    opacity: 1;
+}

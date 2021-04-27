@@ -10,7 +10,7 @@ Feature: Create and Edit a Product
     Scenario: Adding a Product
         And I click "Nuevo Producto"
         And I fill in the product information
-        And I click "Crear Producto"
+        And I click "Crear"
         Then I should see the product information
         
     Scenario: Editing a Product

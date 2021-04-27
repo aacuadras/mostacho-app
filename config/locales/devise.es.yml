@@ -16,6 +16,7 @@ es:
       already_authenticated: 'Ya estás dentro del sistema.'
       unauthenticated: 'Necesitas ingresar o registrarte para continuar.'
       unconfirmed: 'Debes confirmar tu cuenta para continuar.'
+      not_found_in_database: 'Tu %{authentication_keys} o contraseña es invalido'
       locked: 'Tu cuenta está bloqueada.'
       invalid: 'Correo o contraseña inválidos.'
       invalid_token: 'Ficha de autenticación invalida.'
