@@ -5,6 +5,8 @@
     <% end %>
     <h1 class="h3 mb-3 fw-normal">Inicia Sesión</h1>
 
+    <%= render 'devise/shared/flash' %>
+
     <%= f.input :email,
                 required: true,
                 autofocus: true,

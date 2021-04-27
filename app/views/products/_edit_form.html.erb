@@ -1,17 +1,24 @@
 <%= simple_form_for @product do |f| %>
     <div class="col">
         <div class="card shadow-sm">
-            <% if product.photo.attached? %>
-                <%= image_tag(product.photo, width: "100%", height: "225") %> 
-            <% else %>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> 
-            <% end %>
+            <div class="container-fluid">
+                <% if product.photo.attached? %>
+                    <%= image_tag(product.photo, width: "100%", height: "225") %> 
+                <% else %>
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> 
+                <% end %>
+                <div class="photo-button"><%= f.input :photo, as: :file, wrapper: false, label: false %></div>
+            </div>
 
             <div class="card-body">
                 <%= f.input :name, label_html: {class: 'card-text'} %>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <%= f.submit "Editar", class: "btn btn-sm btn-outline-secondary" %>
+                        <% if action_name == "edit" %>
+                          <%= f.submit "Editar", class: "btn btn-sm btn-outline-secondary" %>
+                        <% else %>
+                          <%= f.submit "Crear", class: "btn btn-sm btn-outline-secondary" %>
+                        <% end %>
                         <%= link_to "Cancelar", @product, class: "btn btn-sm btn-outline-secondary" %>
                     </div>
                     <%= f.input :price, label_html: {class: "text-muted"} %>

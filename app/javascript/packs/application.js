@@ -12,6 +12,7 @@ import "jquery"
 Rails.start()
 ActiveStorage.start()
 
+
 import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all"
 import "../stylesheets/application"

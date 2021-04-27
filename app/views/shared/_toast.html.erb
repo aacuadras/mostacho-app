@@ -1,0 +1,18 @@
+<div data-controller="toast" class="toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <% if action_name == "create" %>
+      <i class="fas fa-check pe-1"></i>
+    <% elsif action_name == "update" %>
+      <i class="far fa-edit pe-1"></i>
+    <% elsif action_name == "destroy" %>
+      <i class="far fa-trash-alt pe-1"></i>
+    <% else %>
+      <i class="fas fa-question"></i>
+    <% end %>
+    <strong class="me-auto"><%= title %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    <%= message %>
+  </div>
+</div>

@@ -2,9 +2,6 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Productos</h1>
-        <p>
-          <%= link_to 'Nuevo Producto', new_product_path, class: "btn btn-primary my-2", remote: true, "data-bs-toggle" => "modal", "data-bs-target" => "#exampleModal" if user_signed_in? %>
-        </p>
       </div>
     </div>
   </section>
@@ -15,6 +12,7 @@
         <%= turbo_stream_from "products" %>
         <%= turbo_frame_tag "products", class: "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" do %>
           <%= render @products, user: current_user %>
+          <%= render 'shared/new_product_btn' if user_signed_in? %>
         <% end %>
       <% else %>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
@@ -25,12 +23,5 @@
       <% end %>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-          <%= yield %>
-      </div>
-    </div>
-  </div>
+
 </main>

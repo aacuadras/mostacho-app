@@ -14,3 +14,10 @@
  *= require_self
  *= stub devise
  */
+
+#toasts {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 5;
+}
